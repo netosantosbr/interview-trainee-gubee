@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  app:
+    image: springboot-postgresql
+    build:
+      context: .
+    container_name: application
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresqlDB
+
+  postgresqlDB:
+    image: postgres
+    container_name: postgresdb
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./init:/databaseSetup.sql
+
+
+
