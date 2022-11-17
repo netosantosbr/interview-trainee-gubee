@@ -31,7 +31,7 @@ Quando tentamos rodar os testes do projeto identificamos um bug no cadastro, alg
 - [x] Criar endpoint de atualização de heróis, todos os campos poderão ser atualizados. ***Caso não encontre o herói o sistema deve retornar um erro 404 (Not Found) ** **(✅ Desenvolvido)**
 - [x] Criar endpoint de exclusão de heróis. A exclusão será física, ok? (Física?! É, deleta o registro da base). ***Caso não encontre o herói o sistema deve retornar um erro 404 (Not Found)***. **(✅ Desenvolvido)**
 
-Ah, tem algo mais! O x	 nos pediu para criar um endpoint onde ele possa selecionar dois heróis e comparar seus atributos força, agilidade, destreza e inteligência. Como resultado, o sistema deve retornar um objeto contendo os id's e a diferença dos atributos (positivo se maior, negativo se menor) de cada herói. Dá uma pensada em como vai ficar esse objeto e o caminho do endpoint, tudo bem?
+Ah, tem algo mais! O Sr. Wayne nos pediu para criar um endpoint onde ele possa selecionar dois heróis e comparar seus atributos força, agilidade, destreza e inteligência. Como resultado, o sistema deve retornar um objeto contendo os id's e a diferença dos atributos (positivo se maior, negativo se menor) de cada herói. Dá uma pensada em como vai ficar esse objeto e o caminho do endpoint, tudo bem?  **(✅ Desenvolvido)**
 <p>
 Agora sim, terminamos! Se você nos entregar isso que pedimos garanto que o Sr. Wayne vai pirar!!!
 
@@ -60,4 +60,6 @@ mvn clean verify
 Será considerado um plus os candidatos que entregarem:
 - Testes unitários e de integração das funcionalidades desenvolvidas; **(✅ Desenvolvido)**
 - Bom uso dos padrões de REST;
-- Um `docker-compose.yml` funcional para execução da aplicação. (Banco de Dados + API) **(⚠️ Desenvolvido, porém necessita solucionar um problema na geração de tabelas relacionado ao uuid_generate_v4() em relação ao Docker)**
+- Um `docker-compose.yml` funcional para execução da aplicação. (Banco de Dados + API) **(⚠️ Desenvolvido, porém necessita solucionar um problema na geração de tabelas relacionado ao uuid_generate_v4() em relação ao Docker. Erro abaixo:)**
+
+![Error](https://i.imgur.com/7VEVhxo.png, "ERROR")
