@@ -44,6 +44,10 @@ public class HeroRepository {
             "ps.dexterity, ps.intelligence, ps.created_at, ps.updated_at FROM hero h INNER JOIN power_stats ps ON " +
             "h.power_stats_id = ps.id";
 
+    private static final String FIND_ALL_BY_NAME_QUERY = "SELECT h.id, h.name, h.race, ps.strength, ps.agility, " +
+            "ps.dexterity, ps.intelligence, ps.created_at, ps.updated_at FROM hero h INNER JOIN power_stats ps ON " +
+            "h.power_stats_id = ps.id WHERE h.name LIKE :name";
+
     private static final String DELETE_QUERY = "DELETE FROM hero h WHERE h.id = :id";
 
     private static final String FIND_POWER_STATS_ID_FROM_HERO_QUERY = "SELECT h.power_stats_id FROM hero h WHERE " +
@@ -96,13 +100,30 @@ public class HeroRepository {
 
     //Ler por Nome
     public List<HeroResp> findByName(String name){
-        List<HeroResp> listOfAllHeroes = findAll();
         List<HeroResp> listOfMatchedHeroes = new ArrayList<>();
-        for(HeroResp h : listOfAllHeroes){
-            if(h.getName().contains(name)){
-                listOfMatchedHeroes.add(h);
+
+        RowMapper<HeroResp> rowMapper = new RowMapper<>() {
+            @Override
+            public HeroResp mapRow(ResultSet rs, int rowNum) throws SQLException {
+
+                HeroResp objectResponse = new HeroResp(
+                        UUID.fromString(rs.getString("id")),
+                        rs.getString("name"),
+                        Race.valueOf(rs.getString("race")),
+                        rs.getInt("strength"),
+                        rs.getInt("agility"),
+                        rs.getInt("dexterity"),
+                        rs.getInt("intelligence")
+                );
+
+                return objectResponse;
             }
-        }
+        };
+        name = "%" + name.toLowerCase().trim() + "%";
+        SqlParameterSource param = new MapSqlParameterSource("name", name);
+
+        listOfMatchedHeroes = namedParameterJdbcTemplate.query(FIND_ALL_BY_NAME_QUERY, param, rowMapper);
+
         return listOfMatchedHeroes;
     }
 
