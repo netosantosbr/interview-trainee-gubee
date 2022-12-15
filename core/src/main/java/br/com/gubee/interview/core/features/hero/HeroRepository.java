@@ -46,7 +46,7 @@ public class HeroRepository {
 
     private static final String FIND_ALL_BY_NAME_QUERY = "SELECT h.id, h.name, h.race, ps.strength, ps.agility, " +
             "ps.dexterity, ps.intelligence, ps.created_at, ps.updated_at FROM hero h INNER JOIN power_stats ps ON " +
-            "h.power_stats_id = ps.id WHERE h.name LIKE :name";
+            "h.power_stats_id = ps.id WHERE lower(h.name) LIKE :name";
 
     private static final String DELETE_QUERY = "DELETE FROM hero h WHERE h.id = :id";
 
