@@ -22,7 +22,7 @@ import java.util.UUID;
 
 @Repository
 @RequiredArgsConstructor
-public class HeroRepository {
+public class HeroRepository implements br.com.gubee.interview.core.features.hero.interfaces.HeroRepository {
 
 
     private static final String CREATE_HERO_QUERY = "INSERT INTO hero" +

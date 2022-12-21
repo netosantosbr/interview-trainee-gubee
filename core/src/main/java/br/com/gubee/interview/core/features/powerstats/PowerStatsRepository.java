@@ -12,11 +12,11 @@ import java.util.UUID;
 
 @Repository
 @RequiredArgsConstructor
-public class PowerStatsRepository {
+public class PowerStatsRepository implements br.com.gubee.interview.core.features.powerstats.interfaces.PowerStatsRepository {
 
     private static final String CREATE_POWER_STATS_QUERY = "INSERT INTO power_stats" +
-        " (strength, agility, dexterity, intelligence)" +
-        " VALUES (:strength, :agility, :dexterity, :intelligence) RETURNING id";
+            " (strength, agility, dexterity, intelligence)" +
+            " VALUES (:strength, :agility, :dexterity, :intelligence) RETURNING id";
 
     private static final String DELETE_QUERY = "DELETE FROM power_stats ps WHERE ps.id = :id";
 
@@ -24,12 +24,12 @@ public class PowerStatsRepository {
 
     public UUID create(PowerStats powerStats) {
         return namedParameterJdbcTemplate.queryForObject(
-            CREATE_POWER_STATS_QUERY,
-            new BeanPropertySqlParameterSource(powerStats),
-            UUID.class);
+                CREATE_POWER_STATS_QUERY,
+                new BeanPropertySqlParameterSource(powerStats),
+                UUID.class);
     }
 
-    public void delete(UUID id){
+    public void delete(UUID id) {
         SqlParameterSource param = new MapSqlParameterSource("id", id);
         namedParameterJdbcTemplate.update(DELETE_QUERY, param);
     }

@@ -1,6 +1,7 @@
 package br.com.gubee.interview.core.features.hero;
 
-import br.com.gubee.interview.core.features.powerstats.PowerStatsRepository;
+import br.com.gubee.interview.core.features.hero.interfaces.HeroRepository;
+import br.com.gubee.interview.core.features.powerstats.interfaces.PowerStatsRepository;
 import br.com.gubee.interview.model.Hero;
 import br.com.gubee.interview.model.PowerStats;
 import br.com.gubee.interview.model.request.CreateHeroRequest;
