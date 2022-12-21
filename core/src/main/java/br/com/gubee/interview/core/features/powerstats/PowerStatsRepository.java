@@ -34,4 +34,8 @@ public class PowerStatsRepository implements br.com.gubee.interview.core.feature
         namedParameterJdbcTemplate.update(DELETE_QUERY, param);
     }
 
+    public PowerStats findById(UUID id) {
+        return null;
+    }
+
 }

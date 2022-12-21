@@ -1,5 +1,6 @@
 package br.com.gubee.interview.core.features.powerstats;
 
+import br.com.gubee.interview.core.features.powerstats.interfaces.PowerStatsRepository;
 import br.com.gubee.interview.model.PowerStats;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,4 +19,8 @@ public class PowerStatsService {
         return powerStatsRepository.create(powerStats);
     }
 
+    @Transactional
+    public PowerStats findById(UUID id) {
+        return powerStatsRepository.findById(id);
+    }
 }

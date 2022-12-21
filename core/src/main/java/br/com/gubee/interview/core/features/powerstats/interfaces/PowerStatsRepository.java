@@ -7,4 +7,6 @@ import java.util.UUID;
 public interface PowerStatsRepository {
     UUID create(PowerStats powerStats);
     void delete(UUID id);
+
+    PowerStats findById(UUID id);
 }
