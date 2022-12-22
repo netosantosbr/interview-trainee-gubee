@@ -1,27 +1,24 @@
-package br.com.gubee.interview.core.features.hero;
+package br.com.gubee.interview.core.features.hero.stubs;
 
+import br.com.gubee.interview.core.features.hero.impl.HeroRepositoryInMemory;
+import br.com.gubee.interview.core.features.hero.impl.PowerStatsRepositoryInMemory;
 import br.com.gubee.interview.core.features.hero.interfaces.HeroRepository;
-import br.com.gubee.interview.core.features.powerstats.interfaces.PowerStatsRepository;
+import br.com.gubee.interview.core.features.hero.interfaces.HeroService;
 import br.com.gubee.interview.model.Hero;
 import br.com.gubee.interview.model.PowerStats;
 import br.com.gubee.interview.model.request.CreateHeroRequest;
 import br.com.gubee.interview.model.response.HeroCompareResp;
 import br.com.gubee.interview.model.response.HeroResp;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 import java.util.UUID;
 
-@Service
-@RequiredArgsConstructor
-public class HeroService implements br.com.gubee.interview.core.features.hero.interfaces.HeroService {
+public class HeroServiceStub implements HeroService {
+    private PowerStatsRepositoryInMemory powerStatsRepository = new PowerStatsRepositoryInMemory();
+    private HeroRepositoryInMemory heroRepository = new HeroRepositoryInMemory(powerStatsRepository);
 
-    private final PowerStatsRepository powerStatsRepository;
-    private final HeroRepository heroRepository;
 
-    @Transactional
     public UUID create(CreateHeroRequest createHeroRequest) {
         return heroRepository.create(new Hero(createHeroRequest,
                 powerStatsRepository.create(new PowerStats(createHeroRequest))));
@@ -43,14 +40,14 @@ public class HeroService implements br.com.gubee.interview.core.features.hero.in
         return heroRepository.findAll();
     }
 
-    @Transactional
+
     public void delete(UUID id){
         UUID powerStatsIdFromHero = heroRepository.findPowerStatsIdFromHero(id);
         heroRepository.delete(id);
         powerStatsRepository.delete(powerStatsIdFromHero);
     }
 
-    @Transactional
+
     public UUID update(UUID id, HeroResp hero){
         return heroRepository.update(id, hero);
     }

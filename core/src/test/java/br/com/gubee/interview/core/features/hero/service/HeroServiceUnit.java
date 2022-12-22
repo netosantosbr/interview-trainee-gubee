@@ -1,6 +1,7 @@
-package br.com.gubee.interview.core.features.hero;
+package br.com.gubee.interview.core.features.hero.service;
 
 
+import br.com.gubee.interview.core.features.hero.HeroService;
 import br.com.gubee.interview.core.features.hero.impl.HeroRepositoryInMemory;
 import br.com.gubee.interview.core.features.hero.impl.PowerStatsRepositoryInMemory;
 import br.com.gubee.interview.model.enums.Race;
@@ -13,10 +14,11 @@ import br.com.gubee.interview.model.response.HeroResp;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 
-public class HeroServiceTest {
+public class HeroServiceUnit {
 
     private PowerStatsRepositoryInMemory psRepository = new PowerStatsRepositoryInMemory();
     private HeroRepositoryInMemory heroRepository = new HeroRepositoryInMemory(psRepository);
@@ -175,10 +177,9 @@ public class HeroServiceTest {
         UUID secondId = UUID.randomUUID();
 
         // WHEN
-        HeroCompareResp result = heroService.compareTwoHeroes(firstId, secondId);
 
         // THEN
-        assertNull(result);
+        assertThrows(NoSuchElementException.class, () -> heroService.compareTwoHeroes(firstId, secondId));
     }
 
     @Test

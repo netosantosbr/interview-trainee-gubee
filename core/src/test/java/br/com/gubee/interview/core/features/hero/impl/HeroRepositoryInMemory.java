@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 
@@ -101,7 +102,7 @@ public class HeroRepositoryInMemory implements HeroRepository {
                     firstHero.getIntelligence() - secondHero.getIntelligence()
             );
         }
-        return null;
+        throw new NoSuchElementException();
     }
 
     @Override
@@ -147,6 +148,6 @@ public class HeroRepositoryInMemory implements HeroRepository {
                 return h.getId();
             }
         }
-        return null;
+        throw new NoSuchElementException();
     }
 }
