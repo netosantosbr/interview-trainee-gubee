@@ -1,12 +1,10 @@
-package br.com.gubee.interview.core.features.hero.impl;
+package br.com.gubee.interview.core.features.hero.inmemory;
 
 import br.com.gubee.interview.core.features.hero.interfaces.HeroRepository;
-import br.com.gubee.interview.core.features.powerstats.PowerStatsService;
 import br.com.gubee.interview.model.Hero;
 import br.com.gubee.interview.model.PowerStats;
 import br.com.gubee.interview.model.response.HeroCompareResp;
 import br.com.gubee.interview.model.response.HeroResp;
-import lombok.AllArgsConstructor;
 
 import java.time.Instant;
 import java.util.ArrayList;

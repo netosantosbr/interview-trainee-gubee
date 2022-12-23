@@ -1,8 +1,7 @@
 package br.com.gubee.interview.core.features.hero.stubs;
 
-import br.com.gubee.interview.core.features.hero.impl.HeroRepositoryInMemory;
-import br.com.gubee.interview.core.features.hero.impl.PowerStatsRepositoryInMemory;
-import br.com.gubee.interview.core.features.hero.interfaces.HeroRepository;
+import br.com.gubee.interview.core.features.hero.inmemory.HeroRepositoryInMemory;
+import br.com.gubee.interview.core.features.hero.inmemory.PowerStatsRepositoryInMemory;
 import br.com.gubee.interview.core.features.hero.interfaces.HeroService;
 import br.com.gubee.interview.model.Hero;
 import br.com.gubee.interview.model.PowerStats;
