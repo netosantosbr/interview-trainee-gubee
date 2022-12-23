@@ -1,4 +1,4 @@
-package br.com.gubee.interview.core.features.hero.inmemory;
+package br.com.gubee.interview.core.stub;
 
 import br.com.gubee.interview.core.features.powerstats.interfaces.PowerStatsRepository;
 import br.com.gubee.interview.model.PowerStats;

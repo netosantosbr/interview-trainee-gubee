@@ -2,8 +2,8 @@ package br.com.gubee.interview.core.features.hero.service;
 
 
 import br.com.gubee.interview.core.features.hero.HeroService;
-import br.com.gubee.interview.core.features.hero.inmemory.HeroRepositoryInMemory;
-import br.com.gubee.interview.core.features.hero.inmemory.PowerStatsRepositoryInMemory;
+import br.com.gubee.interview.core.stub.HeroRepositoryInMemory;
+import br.com.gubee.interview.core.stub.PowerStatsRepositoryInMemory;
 import br.com.gubee.interview.model.enums.Race;
 import br.com.gubee.interview.model.request.CreateHeroRequest;
 
